@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useDispatch, useTrackedState } from './store';
 import { useFlasher } from './utility';
-
+import './styles/todoitem.css';
 const renderHighlight = (title, query) => {
   if (!query) return title;
   const index = title.indexOf(query);
@@ -23,7 +23,9 @@ const TodoItem = ({ id, title, completed }) => {
     dispatch({ type: 'DELETE_TODO', id });
   };
   return (
+     
     <li ref={useFlasher()}>
+      <br/>
       <input
         type="checkbox"
         checked={!!completed}
@@ -36,7 +38,8 @@ const TodoItem = ({ id, title, completed }) => {
       >
         {completed ? title : renderHighlight(title, state.query)}
       </span>
-      <button onClick={delTodo}>Delete</button>
+     &nbsp;&nbsp; <button onClick={delTodo}>Delete</button>
+
     </li>
   );
 };
